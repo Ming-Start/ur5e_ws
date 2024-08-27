@@ -1,0 +1,15 @@
+<!-- launch_moving_box.launch -->
+<launch>
+    <!-- Launch Gazebo -->
+    <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="paused" value="false"/>
+      <arg name="use_sim_time" value="true"/>
+    </include> -->
+  
+    <!-- Spawn a cubic obstacle in front of the UR5e robot -->
+    <node name="spawn_cubic_obstacle" pkg="gazebo_ros" type="spawn_model"
+          args="-model cubic_obstacle -urdf -f $(find ur5e_gazebo)/urdf/cubic_obstacle.urdf -x 0.5 -y 0.5 -z 0.6" />
+
+    <!-- Start the move_box_node -->
+    <!-- <node name="move_box_node" pkg="ur5e_gazebo" type="move_box.py" output="screen"/> -->
+</launch>

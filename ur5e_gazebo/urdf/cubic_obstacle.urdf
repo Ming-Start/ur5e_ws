@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot name="cubic_obstacle">
+  <!-- Define the visual and collision properties of the cubic obstacle -->
+  <link name="cubic_obstacle_link">
+    <!-- Visual element -->
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.2" /> <!-- Size of the box -->
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1.0" /> <!-- Color of the box -->
+      </material>
+    </visual>
+
+    <!-- Collision element -->
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 0.2" /> <!-- Size of the box for collision detection -->
+      </geometry>
+    </collision>
+
+    <!-- Inertial properties (optional) -->
+    <inertial>
+      <mass value="1.0" /> <!-- Mass of the box -->
+      <origin xyz="0 0 0" /> <!-- Center of mass -->
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" /> <!-- Inertia -->
+    </inertial>
+  </link>
+
+  <!-- Define a static parent link -->
+  <link name="base_link" />
+
+  <!-- Define the joint -->
+  <joint name="fixed_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="cubic_obstacle_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" /> <!-- Position of the obstacle in the parent frame -->
+  </joint>
+
+  <!-- Make the box static -->
+  <gazebo>
+    <static>true</static>
+  </gazebo>
+</robot>
